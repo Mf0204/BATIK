@@ -10,8 +10,8 @@ export default function  header (){
       </nav>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ms-auto mt-2 mt-lg-0">          
-            <li className="nav-item fas fa-envelope fa-fw"><a className="nav-link" href="#!">Massage</a></li>
-            <li className="nav-item fas fa-envelope fa-fw"><a className="nav-link" href="#!">Notification</a></li>
+          
+            <li className="nav-item fas fa-envelope fa-fw"><a className="nav-link" href="../in">logOut</a></li>
           </ul>
         </div>
       </div>

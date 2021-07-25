@@ -10,7 +10,7 @@ async function fetcher(url) {
 }
 export default function Tableproduk() {
     const [deleting, setDeleting] = useState(false)
-    const url = 'http://localhost:3000/api/produk';
+    const url = 'http://localhost:3000/api/pesanan';
     const { data, error } = useSWR(url, fetcher, { refreshInterval: 1000 });
     if (error) {
         return <div>error......</div>
@@ -22,11 +22,11 @@ export default function Tableproduk() {
 
   async function deleteEntry(value) {
     setDeleting(true)
-    let res = await fetch(`http://localhost:3000/api/delet-produk?id_produk=${value}`, { method: 'DELETE' })
+    let res = await fetch(`http://localhost:3000/api/delet-pesanan?id=${value}`, { method: 'DELETE' })
     let json = await res.json()
     if (!res.ok) throw Error(json.message)
     alert("Data telah dihapus  " )
-    mutate('http://localhost:3000/api/produk')
+    mutate('http://localhost:3000/api/pesanan')
     setDeleting(false)
   }
     return(
@@ -35,13 +35,11 @@ export default function Tableproduk() {
                 <thead>
                   <tr>
                     <th>NO</th>
-                    <th>id_produk</th>
+                    <th>nama</th>
                     <th>nama_produk</th>
-                    <th>gambar</th>
                     <th>harga</th>
-                    <th>bahan</th>
-                    <th>berat</th>
-                    <th>keterangan</th>
+                    <th>alamat</th>
+                    <th>telepon</th>
                     <th>Up & del</th>
                   </tr>
                 </thead>
@@ -49,25 +47,17 @@ export default function Tableproduk() {
                 {data.map((Produk,index)=>
                   <tr>
                     <td>{index+1}</td>
-                    <td>{Produk.id_produk}</td>
+                    <td>{Produk.nama}</td>
                     <td>{Produk.nama_produk}</td>
-                    <td><img
-                  className="rounded"
-                  src={Produk.gambar}
-                  alt="Sampul"
-                  style={{ width: '70px', height: '70px' }}
-                /></td>
                     <td>{Produk.harga}</td>
-                    <td>{Produk.bahan}</td>
-                    <td>{Produk.berat}</td>
-                    <td>{Produk.keterangan}</td>
+                    <td>{Produk.alamat}</td>
+                    <td>{Produk.telepon}</td>
+      
                     <td>
-                        <a href={`/admin/updateproduk/?id_produk=${Produk.id_produk}&nama_produk=${Produk.nama_produk}&harga=${Produk.harga}&bahan=${Produk.bahan}&berat=${Produk.berat}&keterangan=${Produk.keterangan}`}>
-                        <button type="button" className="btn btn-primary btn-sm ">update
-                        </button></a>
+                    
                         <button type="button" className="btn btn-danger btn-sm "
                         disabled={deleting} 
-                        value = {Produk.id_produk}
+                        value = {Produk.id}
                         onClick={e => deleteEntry(e.target.value)}     
                         >{deleting ? '' : ' ' }
                         delet

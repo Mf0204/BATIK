@@ -4,17 +4,22 @@ import { useState } from 'react'
 import Router, { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
+
 export default function admin() {
+
+
   const [_id_produk, setId] = useState('')
   const [_nama_produk, setProduk] = useState('')
   const [_gambar, setGambar] = useState(null)
   const [_harga, setHarga] = useState('')
+  const [_bahan, setBahan] = useState('')
+  const [_berat, setBerat] = useState('')
   const [_keterangan, setKet] = useState('')
   const [selectedFile, setSelectedFile] = useState('')
   const [file, setFile] = useState('')
   const [submitting, setSubmitting] = useState(false)
   const router = useRouter()
-  const { id_produk,nama_produk,gambar,harga,keterangan } = router.query
+  const { id_produk,nama_produk,gambar,harga,bahan, berat, keterangan } = router.query
 
   const onSelectImage = (e) => {
     if (!e.target.files || e.target.files.length === 0) {
@@ -44,11 +49,17 @@ export default function admin() {
     if (typeof harga == 'string') {
       setHarga(harga)
     }
+    if (typeof bahan == 'string') {
+      setBahan(bahan)
+    }
+    if (typeof berat == 'string') {
+      setBerat(berat)
+    }
     if (typeof keterangan == 'string') {
       setKet(keterangan)
     }
 
-  }, [id_produk,nama_produk,gambar,harga,keterangan])
+  }, [id_produk,nama_produk,gambar,harga,bahan,berat,keterangan])
 
   async function submitHandler(e) {
     e.preventDefault()
@@ -64,6 +75,8 @@ export default function admin() {
           nama_produk: _nama_produk,
           gambar: _gambar,
           harga: _harga,
+          bahan: _bahan,
+          berat: _berat,
           keterangan: _keterangan
         }),
       })
@@ -71,7 +84,7 @@ export default function admin() {
       setSubmitting(false)
       if (!res.ok) throw Error(json.message)
 
-      alert("Update data suskses" +_id_produk +_nama_produk +_gambar+ _harga + _keterangan)
+      alert("Update data suskses" )
       Router.push('/admin/home')
     } catch (e) {
       throw Error(e.message)
@@ -92,6 +105,8 @@ export default function admin() {
            <th>Nama Produk</th>
            <th>Gambar</th>
            <th>Harga</th>
+           <th>Bahan</th>
+           <th>Berat</th>
            <th>Keterangan</th>
           </tr>
           </thead>
@@ -114,6 +129,14 @@ export default function admin() {
             <td><input type="text" className="form-control" placeholder="harga..." 
             value = {_harga} 
             onChange = {(e) => setHarga(e.target.value)}
+            /></td>
+            <td><input type="text" className="form-control" placeholder="bahan..." 
+            value = {_bahan} 
+            onChange = {(e) => setBahan(e.target.value)}
+            /></td>
+            <td><input type="text" className="form-control" placeholder="berat..." 
+            value = {_berat} 
+            onChange = {(e) => setBerat(e.target.value)}
             /></td>
             <td><input type="text" className="form-control" placeholder="keterangan..." 
             value = {_keterangan} 

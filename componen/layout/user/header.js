@@ -12,20 +12,12 @@ export default function navigation() {
                         <li className="nav-item"><a className="nav-link active" aria-current="page" href="#!">Home</a></li>
                         <li className="nav-item"><a className="nav-link" href="produk">All Product</a></li>
                     </ul>
-                    <form className="d-flex">
-                        <Link href="/cart">
-                        <button className="btn btn-outline-dark" type="submit">
-                        <i className="bi-cart-fill me-1" />
-                        Cart
-                        <span className="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        </button></Link>
-                    </form>  &nbsp;
                     {/* <li className="nav-item"><a className="nav-link" href="detail">Log In</a></li> */}
                     <form className="d-flex">
-                        <Link href="/login">
+                        <Link href="../in">
                         <button className="btn btn-outline-dark" type="submit">
                         <i className="bi-cart-fill me-1" />
-                        Log In
+                        Log Out
                        </button>
                         </Link>
                     </form>
