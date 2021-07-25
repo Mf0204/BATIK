@@ -2,9 +2,9 @@
 import { query } from '../../lib/db'
 
 const handler = async (req, res) => {
-  const { id_produk,nama_produk,gambar,harga,bahan,berat,keterangan} = req.body
+  const {  nama_user, username, password, email} = req.body
   try {
-    if  (!id_produk ||!nama_produk ||!gambar ||!harga ||!bahan ||!berat ||!keterangan  ) {
+    if  ( !nama_user || !username || !password || !email ) {
       return res
         .status(400)
         .json({ message: 'input harus di isi semua' })
@@ -12,8 +12,8 @@ const handler = async (req, res) => {
 
     const results = await query(
       `
-      INSERT INTO produk (id_produk,nama_produk,gambar,harga,bahan,berat,keterangan)
-      VALUES (?,?,?,?,?,?,?)`,[id_produk,nama_produk,gambar,harga,bahan,berat,keterangan]
+      INSERT INTO user ( nama_user, username, password, email)
+      VALUES (?,?,?,?)`,[ nama_user, username, password, email]
     );
     // await query.end;
 

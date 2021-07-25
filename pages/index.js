@@ -1,6 +1,44 @@
 import React from 'react'
+import { useState } from 'react'
 
 export default function login() {
+  const [id_user, setId] = useState('')
+  const [nama_user, setNama] = useState('')
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState('')
+  
+  const clearInput = () => {
+    setId('')
+    setNama('')
+    setUsername('')
+    setPassword('')
+    setEmail('')
+  }
+
+  async function submitHandler(e) {
+    // setSubmitting(true)
+    e.preventDefault()
+    try {
+      const res = await fetch('http://localhost:3000/api/input-user', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+           nama_user, username, password, email
+        }),
+      })
+      // setSubmitting(false)
+      const json = await res.json()
+      if (!res.ok) throw Error(json.message)
+      // Router.push('/')
+      alert("Penambahan Data Sukses")
+      clearInput()
+    } catch (e) {
+      throw Error(e.message)
+    }
+  }
     return (
         <div>
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -25,77 +63,47 @@ export default function login() {
       </div>
       {/* Registeration Form */}
       <div className="col-md-7 col-lg-6 ml-auto">
-        <form action="#">
+        <form onSubmit={submitHandler}>
           <div className="row">
             {/* First Name */}
             <div className="input-group col-lg-6 mb-4">
-              <input id="firstName" type="text" name="firstname" placeholder="First Name" className="form-control bg-white border-left-0 border-md" />
+              <input             
+              value = {nama_user} 
+              onChange = {(e) => setNama(e.target.value)}
+              type="text" placeholder="Nama" className="form-control bg-white border-left-0 border-md" />
             </div>
-            {/* Last Name */}
+            {/* Username */}
             <div className="input-group col-lg-6 mb-4">
-              <input id="lastName" type="text" name="lastname" placeholder="Last Name" className="form-control bg-white border-left-0 border-md" />
+              <input 
+              value = {username} 
+              onChange = {(e) => setUsername(e.target.value)}
+              type="text" placeholder="Username" className="form-control bg-white border-left-0 border-md" />
+            </div>
+            {/* Pasword */}
+            <div className="input-group col-lg-6 mb-4">
+            <input 
+            value = {password} 
+            onChange = {(e) => setPassword(e.target.value)}
+            type="password" placeholder="Password" className="form-control bg-white border-left-0 border-md" />
             </div>
             {/* Email Address */}
             <div className="input-group col-lg-12 mb-4">
-              <input id="email" type="email" name="email" placeholder="Email Address" className="form-control bg-white border-left-0 border-md" />
-            </div>
-            {/* Phone Number */}
-            <div className="input-group col-lg-12 mb-4">
-              <select id="countryCode" name="countryCode" style={{maxWidth: 80}} className="custom-select form-control bg-white border-left-0 border-md h-100 font-weight-bold text-muted">
-                <option value>+62</option>
-                <option value>+60</option>
-                <option value>+7</option>
-                <option value>+66</option>
-              </select>
-              <input id="phoneNumber" type="tel" name="phone" placeholder="Phone Number" className="form-control bg-white border-md border-left-0 pl-3" />
-            </div>.
-            {/* Job */}
-            <div className="input-group col-lg-12 mb-4">
-              <select id="job" name="jobtitle" className="form-control custom-select bg-white border-left-0 border-md">
-                <option value>Choose your job</option>
-                <option value>Mahasiswa</option>
-                <option value>PNS</option>
-                <option value>Wiraswasta</option>
-                <option value>Lainnya</option>
-              </select>
-            </div>
-            {/* Password */}
-            <div className="input-group col-lg-6 mb-4">
-              <input id="password" type="password" name="password" placeholder="Password" className="form-control bg-white border-left-0 border-md" />
-            </div>
-            {/* Password Confirmation */}
-            <div className="input-group col-lg-6 mb-4">
-              <input id="passwordConfirmation" type="text" name="passwordConfirmation" placeholder="Confirm Password" className="form-control bg-white border-left-0 border-md" />
+              <input 
+              value = {email} 
+              onChange = {(e) => setEmail(e.target.value)}
+              type="email" placeholder="Email Address" className="form-control bg-white border-left-0 border-md" />
             </div>
             {/* Submit Button */}
             <center>
             <div className="form-group col-lg-12 mx-auto mb-0">
-              <a href="#" className="btn btn-primary btn-block py-2">
-                <span className="font-weight-bold">Create your account</span>
-              </a>
-            </div></center>
-            {/* Divider Text */}
-            <div className="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
-              <div className="border-bottom w-100 ml-5" />
-              <span className="px-2 small text-muted font-weight-bold text-muted">OR</span>
-              <div className="border-bottom w-100 mr-5" />
-            </div>
-            <center>
-            {/* Social Login */}
-            <div className="form-group col-lg-12 mx-auto">
-              <a href="#" className="btn btn-primary btn-block py-2 btn-facebook">
-                <i className="fa fa-facebook-f mr-2" />
-                <span className="font-weight-bold">Continue with Facebook</span>
-              </a> &nbsp;
-              <a href="#" className="btn btn-primary btn-block py-2 btn-twitter">
-                <i className="fa fa-twitter mr-2" />
-                <span className="font-weight-bold">Continue with Twitter</span>
+              <a  >
+                <button className="btn btn-primary btn-block py-2" type="submit">Create your account</button>
               </a>
             </div></center>
             {/* Already Registered */}
             <p/>
             <div className="text-center w-100">
-              <p className="text-muted font-weight-bold">Already Registered? <a href="#" className="text-primary ml-2">Login</a></p>
+              <p className="text-muted font-weight-bold">Already Registered? <a href="in" className="text-primary ml-2">Login</a></p>
             </div>
           </div>
         </form>

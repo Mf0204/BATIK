@@ -1,8 +1,8 @@
 //@ts-check
 import Head from 'next/head' 
-import Header from '../../componen/header'
-import Body from '../../componen/body'
-import Kolomproduk from '../../componen/kolomproduk'
+import Header from '../../componen/user/header'
+import Body from '../../componen/user/body'
+import Kolomproduk from '../../componen/user/kolomproduk'
 import useSWR from 'swr'
 import { useState } from 'react'
 // import Moment from 'react-moment'
@@ -30,11 +30,10 @@ export default function Home() {
         <title>Batik</title>
       </Head>
       <Header/>
-      <div className='row'>
-        {data.map((kolom)=>(
-          <Kolomproduk Imgurl={kolom.gambar} NamaProduk={kolom.nama_produk} Price={kolom.price} Price2={kolom.harga}/>
-        ))
-      }
+      <div className='row '>
+      
+          <Kolomproduk />
+     
 
       </div>
     </div>

@@ -1,9 +1,9 @@
 import React from 'react'
-import Outerbatik from '../componen/outerbatik'
+import Outerbatik from '../../componen/user/outerbatik'
 
 export default function footer() {
   const Isi=[
-    {imgurl:'../blarak.jpg',namaproduk:'Blarak Sempal', price2: 'Rp 699.000', bahan: 'Cotton', berat: '220gr' , delivery: 'Banyuwangi, Jawa Timur', detailproduk: 'LIMITED EDISION Ready stock brownies amanda'},
+    {imgurl:'../blarak.jpg',namaproduk:'Blarak Sempal', price2: 'Rp 699.000', bahan: 'Cotton', berat: '220gr' , delivery: 'Banyuwangi, Jawa Timur', detailproduk: 'KAMI HANYA MENYEDIAKAN PRODUK LIMITED EDISION'},
     // {imgurl:'Atasan.png',namaproduk:'Kemeja Batik Wanita', price: 'Rp 249.000', price2: 'Rp 150.000', bahan: 'Cotton', berat: '220gr' , delivery: 'Banyuwangi, Jawa Timur', detailproduk: 'LIMITED EDISION Ready stock brownies amanda'},
     // {imgurl:'dres.png',namaproduk:'Outer Batik', price: 'Rp 299.000', price2: 'Rp 199.000', bahan: 'Cotton', berat: '220gr' , delivery: 'Banyuwangi, Jawa Timur', detailproduk: 'LIMITED EDISION Ready stock brownies amanda'},
     // {imgurl:'bawahan.png',namaproduk:'Rok Batik', price2: 'Rp 99.000', bahan: 'Cotton', berat: '220gr' , delivery: 'Banyuwangi, Jawa Timur', detailproduk: 'LIMITED EDISION Ready stock brownies amanda'}

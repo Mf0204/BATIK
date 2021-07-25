@@ -1,10 +1,11 @@
+
 //@ts-check
 import { query } from '../../lib/db'
 
 const handler = async (req, res) => {
-  const { id_produk,nama_produk,gambar,harga,bahan,berat,keterangan} = req.body
+  const { nama,nama_produk,harga,alamat,telepon} = req.body
   try {
-    if  (!id_produk ||!nama_produk ||!gambar ||!harga ||!bahan ||!berat ||!keterangan  ) {
+    if  (!nama||!nama_produk ||!harga ||!alamat ||!telepon  ) {
       return res
         .status(400)
         .json({ message: 'input harus di isi semua' })
@@ -12,8 +13,8 @@ const handler = async (req, res) => {
 
     const results = await query(
       `
-      INSERT INTO produk (id_produk,nama_produk,gambar,harga,bahan,berat,keterangan)
-      VALUES (?,?,?,?,?,?,?)`,[id_produk,nama_produk,gambar,harga,bahan,berat,keterangan]
+      INSERT INTO pesanan ( nama,nama_produk,harga,alamat,telepon)
+      VALUES (?,?,?,?,?)`,[ nama,nama_produk,harga,alamat,telepon]
     );
     // await query.end;
 

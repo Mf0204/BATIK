@@ -1,5 +1,5 @@
 import React from 'react'
-
+import TablePesanan from '../../componen/admin/tabelpesanan' 
 export default function admincart() {
     return (
     <div>
@@ -16,35 +16,7 @@ export default function admincart() {
         {/* DataTales Example */}
         <div className="card shadow mb-4">
           <div className="card-body">
-            <div className="table-responsive">
-              <table className="table table-bordered" id="dataTable" width="100%" cellSpacing={0}>
-                <thead>
-                  <tr>
-                    <th>ID Produk</th>
-                    <th>ID user</th>
-                    <th>Alamat Pengiriman</th>
-                    <th>Total Biaya</th>
-                    <th>tanda proses</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>System Architect</td>
-                    <td>Edinburgh</td>
-                    <td>61</td>
-                    <td>Logo edit</td>
-                  </tr>
-                  <tr>
-                    <td>Donna Snider</td>
-                    <td>Customer Support</td>
-                    <td>New York</td>
-                    <td>27</td>
-                    <td>2011/01/25</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+         <TablePesanan/>
           </div>
         </div>
       </div>

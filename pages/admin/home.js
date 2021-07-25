@@ -8,6 +8,8 @@ export default function admin() {
   const [nama_produk, setProduk] = useState('')
   const [gambar, setGambar] = useState(null)
   const [harga, setHarga] = useState('')
+  const [berat, setBerat] = useState('')
+  const [bahan, setBahan] = useState('')
   const [keterangan, setKet] = useState('')
   const [selectedFile, setSelectedFile] = useState('')
   const [file, setFile] = useState('')
@@ -30,6 +32,8 @@ export default function admin() {
     setProduk('')
     setGambar('')
     setHarga('')
+    setBahan('')
+    setBerat('')
     setKet('')
     setSelectedFile('')
     setFile('')
@@ -45,7 +49,7 @@ export default function admin() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          id_produk,nama_produk,gambar,harga,keterangan
+          id_produk,nama_produk,gambar,harga,bahan,berat,keterangan
         }),
       })
       // setSubmitting(false)
@@ -72,6 +76,8 @@ export default function admin() {
            <th>Nama Produk</th>
            <th>Gambar</th>
            <th>Harga</th>
+           <th>Bahan</th>
+           <th>Berat</th>
            <th>Keterangan</th>
           </tr>
           </thead>
@@ -95,6 +101,14 @@ export default function admin() {
             value = {harga} 
             onChange = {(e) => setHarga(e.target.value)}
             /></td>
+                <td><input type="text" className="form-control" placeholder="bahan..." 
+            value = {bahan} 
+            onChange = {(e) => setBahan(e.target.value)}
+            /></td>
+                <td><input type="text" className="form-control" placeholder="berat..." 
+            value = {berat} 
+            onChange = {(e) => setBerat(e.target.value)}
+            /></td>
             <td><input type="text" className="form-control" placeholder="keterangan..." 
             value = {keterangan} 
             onChange = {(e) => setKet(e.target.value)}
@@ -109,8 +123,7 @@ export default function admin() {
         </table>
         </form>
         <h1 className="h3 mb-2 text-gray-800">Tabel Produk</h1>
-        <p className="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-          For more information about DataTables, please visit the <a target="_blank" >official DataTables documentation</a>.</p>
+        <p className="mb-4"> <a target="_blank" >official DataTables documentation</a>.</p>
         <div className="card shadow mb-4">
           <div className="card-body">
             <div className="table-responsive">

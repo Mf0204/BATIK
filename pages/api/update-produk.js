@@ -2,9 +2,9 @@
 import { query } from '../../lib/db'
 
 const handler = async (req, res) => {
-    const { id_produk,nama_produk,gambar,harga,keterangan} = req.body
+    const { id_produk,nama_produk,gambar,harga,bahan,berat,keterangan} = req.body
     try {
-        if  (!id_produk ||!nama_produk ||!gambar ||!harga ||!keterangan ) {
+        if  (!id_produk ||!nama_produk ||!gambar ||!harga ||!bahan ||!berat ||!keterangan ) {
             return res
         .status(400)
         .json({ message: 'input harus di isi semua' })
@@ -13,8 +13,8 @@ const handler = async (req, res) => {
     const results = await query(
       `
       UPDATE produk 
-      SET  id_produk = ?,nama_produk = ?,gambar = ?,harga = ?,keterangan = ?
-      WHERE id_produk = ?`, [id_produk,nama_produk,gambar,harga,keterangan,id_produk]
+      SET  id_produk = ?,nama_produk = ?,gambar = ?,harga = ?,bahan = ?,berat = ?,keterangan = ?
+      WHERE id_produk = ?`, [id_produk,nama_produk,gambar,harga,bahan,berat,keterangan,id_produk]
     );
     return res.json(results)
   } catch (e) {

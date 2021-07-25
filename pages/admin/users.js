@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Tableuser from '../../componen/admin/tabeluser'
 export default function users() {
     return (
     <div>
@@ -14,33 +14,7 @@ export default function users() {
         <div className="card shadow mb-4">
           <div className="card-body">
             <div className="table-responsive">
-              <table className="table table-bordered" id="dataTable" width="100%" cellSpacing={0}>
-                <thead>
-                  <tr>
-                    <th>ID User</th>
-                    <th>Nama</th>
-                    <th>Alamat</th>
-                    <th>Email</th>
-                    <th>Telepon</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>System Architect</td>
-                    <td>Edinburgh</td>
-                    <td>61</td>
-                    <td>Logo edit</td>
-                  </tr>
-                  <tr>
-                    <td>Donna Snider</td>
-                    <td>Customer Support</td>
-                    <td>New York</td>
-                    <td>27</td>
-                    <td>2011/01/25</td>
-                  </tr>
-                </tbody>
-              </table>
+            <Tableuser/>
             </div>
           </div>
         </div>
